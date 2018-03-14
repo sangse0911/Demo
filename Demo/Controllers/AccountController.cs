@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Demo.Context;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Demo.Controllers
 {
@@ -40,9 +43,9 @@ namespace Demo.Controllers
         }
 
         //GET: Account/Login
-        [HttpGet]
         public ActionResult Login()
         {
+           
             return View();
         }
 
@@ -53,16 +56,26 @@ namespace Demo.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user = _blog.Accounts.Single(u => u.UserName == account.UserName && u.PassWord == account.PassWord);
+                var user = _blog.Accounts.FirstOrDefault(u => u.UserName == account.UserName && u.PassWord == account.PassWord);
                 if(user != null)
                 {
-                    Session["Id"] = user.Id.ToString();
-                    Session["UserName"] = user.UserName.ToString();
+                    Session["user"] = user;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account");
                 }
             }
-            return View();
-        }
 
+            return View(account);
+        }
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Account");
+        }
         
     }
 }

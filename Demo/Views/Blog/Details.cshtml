@@ -1,21 +1,21 @@
 ﻿@model Demo.Models.Blog
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Details";
 }
 
-<h2>Detail</h2>
+<h2>Details</h2>
 
 <div>
     <h4>Blog</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Author.Name)
+            @Html.DisplayNameFor(model => model.Account.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Author.Name)
+            @Html.DisplayFor(model => model.Account.UserName)
         </dd>
 
         <dt>

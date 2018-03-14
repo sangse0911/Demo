@@ -14,20 +14,9 @@ namespace Demo.Context
         {
             
         }
-        public DbSet<Author> Authors { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-        //    modelBuilder.Entity<Category>()
-        //        .HasMany(c => c.Blogs).WithMany(i => i.Categories)
-        //        .Map(t => t.MapLeftKey("Category_Id")
-        //            .MapRightKey("Blog_Id")
-        //            .ToTable("CategoryBlogs"));
-        //}
     }
 }

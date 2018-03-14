@@ -19,9 +19,9 @@ namespace Demo.Models
         [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
         public DateTime? Date { get; set; }
 
-        public int AuthorId { get; set; }
+        public int AccountId { get; set; }
 
-        public Author Author { get; set; }
+        public Account Account { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
         public Blog()

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Demo.Models;
 using Demo.Context;
+using System.Collections;
 
 namespace Demo.Controllers
 {
@@ -23,13 +24,14 @@ namespace Demo.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            
             return View();
         }
 
         //POST: Blog/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include ="Id, Name, Author_Id")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id, Name, Date, AccountId")] Blog blog)
         {
             if(ModelState.IsValid)
             {
@@ -75,7 +77,7 @@ namespace Demo.Controllers
         //POST: Blog/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include ="Id, Name")] Blog blog)
+        public ActionResult Edit([Bind(Include ="Id, Name, AccountId, Date")] Blog blog)
         {
             if(ModelState.IsValid)
             {

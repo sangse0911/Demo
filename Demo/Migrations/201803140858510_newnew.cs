@@ -3,7 +3,7 @@ namespace Demo.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewMigration : DbMigration
+    public partial class newnew : DbMigration
     {
         public override void Up()
         {
@@ -18,27 +18,17 @@ namespace Demo.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Authors",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Age = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.Blogs",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         Date = c.DateTime(),
-                        AuthorId = c.Int(nullable: false),
+                        AccountId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Authors", t => t.AuthorId, cascadeDelete: true)
-                .Index(t => t.AuthorId);
+                .ForeignKey("dbo.Accounts", t => t.AccountId, cascadeDelete: true)
+                .Index(t => t.AccountId);
             
             CreateTable(
                 "dbo.Categories",
@@ -68,14 +58,13 @@ namespace Demo.Migrations
         {
             DropForeignKey("dbo.CategoryBlogs", "Blog_Id", "dbo.Blogs");
             DropForeignKey("dbo.CategoryBlogs", "Category_Id", "dbo.Categories");
-            DropForeignKey("dbo.Blogs", "AuthorId", "dbo.Authors");
+            DropForeignKey("dbo.Blogs", "AccountId", "dbo.Accounts");
             DropIndex("dbo.CategoryBlogs", new[] { "Blog_Id" });
             DropIndex("dbo.CategoryBlogs", new[] { "Category_Id" });
-            DropIndex("dbo.Blogs", new[] { "AuthorId" });
+            DropIndex("dbo.Blogs", new[] { "AccountId" });
             DropTable("dbo.CategoryBlogs");
             DropTable("dbo.Categories");
             DropTable("dbo.Blogs");
-            DropTable("dbo.Authors");
             DropTable("dbo.Accounts");
         }
     }

@@ -16,5 +16,7 @@ namespace Demo.Models
 
         [Required]
         public string PassWord { get; set; }
+
+        public ICollection<Blog> Blogs { get; set; }
     }
 }
