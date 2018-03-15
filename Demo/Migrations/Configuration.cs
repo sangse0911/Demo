@@ -4,6 +4,8 @@ namespace Demo.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Demo.Context;
+    using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Demo.Context.ContextModel>
     {
@@ -14,18 +16,13 @@ namespace Demo.Migrations
 
         protected override void Seed(Demo.Context.ContextModel context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Accounts.AddOrUpdate(new Account() { UserName = "admin", PassWord = "123456" });
+            
+            context.Categories.AddOrUpdate(new Category() { Id = 1, Name = "adasdasdasdas" });
+            context.Blogs.AddOrUpdate(a => a.Id,
+                new Blog() { Id = 1, Name = "dasdase3wra", AccountId = 1 },
+                new Blog() { Id = 2, Name = "sadasdasdas", AccountId = 1 }
+                );
         }
     }
 }
