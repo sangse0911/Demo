@@ -1,12 +1,14 @@
 ﻿@model Demo.Models.Blog
-
+@using Demo.Models
 @{
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
+@{
+    var categories = ((List<Category>)ViewData["MyData"]);
+}
 
-@using Demo.Models
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -23,6 +25,20 @@
         {
 
         }
+        @*<div class="form-group">
+            <div class="col-md-2">
+                <label for="">CategoryName</label>
+            </div>
+            <div class="col-md-10">
+                <select class="form-control">
+                    @foreach (var c in categories)
+                {
+                        <option value="@c.Id">@c.Name</option>
+                    }
+                </select>
+            </div>
+            
+        </div>*@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })

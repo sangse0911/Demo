@@ -73,9 +73,8 @@ namespace Demo.Controllers
         [HttpPost]
         public ActionResult Logout()
         {
-            Session.Abandon();
+            Session.Clear();
             return RedirectToAction("Login", "Account");
         }
-        
     }
 }

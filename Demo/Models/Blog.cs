@@ -16,7 +16,8 @@ namespace Demo.Models
         public string Name { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "yyyy-MM-dd")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}",
+               ApplyFormatInEditMode = true)]
         public DateTime? Date { get; set; }
 
         public int AccountId { get; set; }
@@ -24,6 +25,7 @@ namespace Demo.Models
         public Account Account { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+
         public Blog()
         {
             this.Categories = new HashSet<Category>();

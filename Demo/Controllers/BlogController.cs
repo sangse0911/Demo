@@ -7,6 +7,7 @@ using System.Data.Entity;
 using Demo.Models;
 using Demo.Context;
 using System.Collections;
+using Demo.ViewModels;
 
 namespace Demo.Controllers
 {
@@ -24,10 +25,16 @@ namespace Demo.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            
+            //BlogModelView blogView = new BlogModelView();
+            //blogView.categories = _blog.Categories.ToList();
+            //return View(blogView);
+            List<SelectListItem> items = new List<SelectListItem>();
+            var categories = _blog.Categories.ToList();
+           
+            ViewData["MyData"] = categories;
             return View();
         }
-
+      
         //POST: Blog/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -51,10 +58,13 @@ namespace Demo.Controllers
 
             }
             Blog blog = _blog.Blogs.Find(id);
+            Account account = _blog.Accounts.Find(blog.AccountId);
+
             if (blog == null)
             {
                 return HttpNotFound();
             }
+            
             return View(blog);
         }
 

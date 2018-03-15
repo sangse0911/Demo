@@ -208,15 +208,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803140858510_newnew.cs" />
-    <Compile Include="Migrations\201803140858510_newnew.Designer.cs">
-      <DependentUpon>201803140858510_newnew.cs</DependentUpon>
+    <Compile Include="Migrations\201803150700420_new.cs" />
+    <Compile Include="Migrations\201803150700420_new.Designer.cs">
+      <DependentUpon>201803150700420_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BlogModelView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -287,8 +288,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803140858510_newnew.resx">
-      <DependentUpon>201803140858510_newnew.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803150700420_new.resx">
+      <DependentUpon>201803150700420_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
